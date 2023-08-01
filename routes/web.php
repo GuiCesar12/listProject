@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\IkoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+//     ])->group(function () {
+//         Route::get('/dashboard', function () {
+//             return view('dashboard');
+//         })->name('dashboard');
+// });
+
+
+Route::get('/',[LeadController::class,'index'])->name('index');
+Route::prefix('leads')->group(function () {
+    Route::post('/saveLeads',[LeadController::class,'save'])->name('saveLead');
+});
+Route::get('/iko',[IkoController::class,'index'])->name('indexIko')->middleware('lead');
+Route::prefix('iko/actions')->group(function(){
+Route::post('/select',[IkoController::class,'select'])->name('selectBearing');
 });
