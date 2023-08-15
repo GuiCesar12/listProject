@@ -1,3 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: flex; /* Esconde as scrollbars do body */
+}
+
+
+
+
 .nav.nav-fill.justify-content-center {
   grid-row-gap: 6px;
 }
