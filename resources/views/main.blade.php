@@ -27,7 +27,7 @@
             <img class="float-right" src="{{URL::asset('img/Design%20sem%20nome%20(1).png')}}">
         </div>    
     </div>
-
+    
     <footer>
         <img src="{{URL::asset('img/TESTE.png')}}"></div>
             
